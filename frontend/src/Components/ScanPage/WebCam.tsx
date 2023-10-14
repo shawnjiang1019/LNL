@@ -25,6 +25,8 @@ const WebCam = () => {
             <div className="btn-container">
                 <button onClick={capture}>Capture photo</button>
             </div>
+
+            
         </div>
   
     );
