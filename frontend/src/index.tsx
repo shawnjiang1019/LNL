@@ -4,9 +4,10 @@ import reportWebVitals from "./reportWebVitals";
 
 import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 import ScanPage from "./Components/ScanPage/ScanPage";
 import PromptPage from "./Components/PromptPage/PromptPage";
-
+import LNLDashboard from "./Components/LNL/LNLDashboard";
 
 const router = createBrowserRouter([
   {
@@ -15,13 +16,16 @@ const router = createBrowserRouter([
   },
   {
     path: "/face",
-    element: <ScanPage/>,
+    element: <ScanPage />,
   },
   {
     path: "/prompt",
-    element: <PromptPage/>
-  }
-
+    element: <PromptPage />,
+  },
+  {
+    path: "/lnl",
+    element: <LNLDashboard />,
+  },
 ]);
 
 const root = ReactDOM.createRoot(

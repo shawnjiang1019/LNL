@@ -1,0 +1,10 @@
+.header .menu-btn {
+  background-color: whitesmoke;
+  box-shadow: none;
+  color: black;
+  height: 100%;
+  margin-right: 0.7rem;
+}
+.header .menu-btn:hover {
+  background-color: whitesmoke;
+}

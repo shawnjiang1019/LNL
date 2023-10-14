@@ -1,5 +1,5 @@
 import Webcam from "react-webcam";
-import { useRef, useState, useCallback, useEffect } from "react"; // import useRef
+import { useRef, useState, useCallback } from "react"; // import useRef
 
 interface WebCamProps {
   setSrc: (src: string) => void;

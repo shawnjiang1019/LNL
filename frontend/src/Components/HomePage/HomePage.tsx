@@ -1,14 +1,9 @@
-import React from 'react'
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-interface HomePageProps {
+interface HomePageProps {}
 
-}
-
-
-export default function HomePage() {
+export default function HomePage({}: HomePageProps) {
   return (
     <div>
-        What up guys
+      <div>What up guys</div>
     </div>
-  )
+  );
 }
