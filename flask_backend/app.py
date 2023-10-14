@@ -8,6 +8,9 @@ import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 import time
 
+global songs
+songs = {}
+
 app = Flask(__name__)
 app.secret_key = 'wtryterwe3yerwegdhgyugfcybwvttt315v532132v51k532vcrwqrc'
 
@@ -55,7 +58,7 @@ def authorize():
     code = request.args.get('code')
     token_info = sp_oauth.get_access_token(code)
     session["token_info"] = token_info
-    return redirect("/home")
+    return redirect("/top")
 
 @app.route('/logout')
 def logout():
@@ -63,7 +66,6 @@ def logout():
 	for key in list(session.keys()):
 		session.pop(key)
 	session.clear()
-	print(session)
 	return redirect('https://accounts.spotify.com/en/logout')
 
 # Checks to see if token is valid and gets a new token if not
@@ -91,20 +93,27 @@ def get_token():
 
 def create_spotify_oauth():
 		return SpotifyOAuth(
-				client_id="5f4e30da16e0418fa42c562b25c70096",
-				client_secret="e316d20fef4a4141ad25c2be65e500f1",
+				client_secret="9874bbeef1dc4b068f1d8e3e4cb40a17",
+				client_id="34def91b71064942b5f1ad13509129a3",
 				redirect_uri=url_for('authorize', _external=True),
 				scope="user-library-read user-top-read")
 
+@app.route('/get_songs')
+def get_songs():
+	if songs:
+			return jsonify(songs)
+	return 'DUPA'
 
 @app.route('/top')
 def get_top_100():
+	global songs
 	session['token_info'], authorized = get_token()
 	print(get_token())
 	session.modified = True
 	if not authorized:
 		return redirect('/')
 	sp = spotipy.Spotify(auth=session.get('token_info').get('access_token'))
+		
 	results = []
 	ids = []
 	for i in range(3):
@@ -115,15 +124,17 @@ def get_top_100():
 			song_id = item['id']
 			ids.append(song_id)
 			results.append(val)
-	
 	### Recomendations
-	for i in range(12):
-			curGroup = sp.recommendations(limit=5, seed_tracks=ids[i*5:5+i*5])['tracks']
-			for ind, item in enumerate(curGroup):
-				val = item['name']
-				results.append(val)
+	for y in range(1):
+			for i in range(12):
+					curGroup = sp.recommendations(limit=5, seed_tracks=ids[i*5:5+i*5])['tracks']
+					for ind, item in enumerate(curGroup):
+						val = item['name']
+						results.append(val)
 
 	data = {'songs': results}
+	
+	songs = data
 	return jsonify(data)
 
 
