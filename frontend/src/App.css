@@ -1,6 +1,8 @@
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
+<<<<<<< HEAD
   box-sizing: border-box;
   background-color: #5FE474;
 }
@@ -21,4 +23,114 @@
 
 .div {
   background-color: #5FE474;
+=======
+  transition: 0.3s ease;
+}
+
+html {
+  /* background: linear-gradient(90deg, white, darkgray); */
+  background-color: whitesmoke;
+  font-family: BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+    "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.app {
+  --header-background: #acacac;
+  --header-height: 5rem;
+
+  --clean-box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%),
+    0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+  --clean-box-shadow-light: 0px 0px 0px 0px rgb(0 0 0 / 20%),
+    0px 0px 0px 0px rgb(0 0 0 / 14%), 0px 1px 1px 0px rgb(0 0 0 / 12%);
+
+  /* blue-themed colour composition */
+  --blue-comp-1: #13293d;
+  --blue-comp-2: #006494;
+  --blue-comp-3: #247ba0;
+  --blue-comp-4: #1b98e0;
+  --blue-comp-5: #e8f1f2;
+
+  height: 1000vh;
+}
+
+/* imports -------------------------------- */
+@import "./styles/comp.css";
+
+.header-2 {
+  display: flex;
+  align-items: center;
+
+  background-color: white;
+  border: solid 1px lightgray;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.brand-name {
+  display: flex;
+  padding: 0.5rem;
+}
+.brand-name:hover {
+  background-color: lightgrey;
+}
+.brand-name-1 {
+  font-size: 30px;
+  font-weight: bold;
+  color: darkgrey;
+}
+.brand-name-2 {
+  font-size: 30px;
+}
+
+.col {
+  color: black;
+}
+
+.profiles {
+  display: none;
+  top: 25vmax;
+  right: 25vmax;
+  background-color: darkgrey;
+  padding: 50px;
+  border: solid;
+}
+
+.search-form {
+  display: flex;
+  margin-left: 10rem;
+}
+
+.pfppic {
+  border-radius: 50%;
+}
+
+.mathfolder {
+  position: absolute;
+}
+
+.profile-btn {
+  display: flex;
+  justify-content: flex-end;
+
+  position: absolute;
+  right: 0;
+  margin-right: 30px;
+}
+.profile-popup {
+  position: absolute;
+  right: 20px;
+  top: 75px;
+  border-radius: 25px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 100;
+  width: 20vw;
+  height: 60vh;
+  padding: 1rem;
+  background-color: gray;
+>>>>>>> 25a030092698b6fdcac03adc39f5b10c918672b3
 }

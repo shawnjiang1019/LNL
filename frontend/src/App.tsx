@@ -1,6 +1,10 @@
 import { useEffect } from "react";
 import axios from "axios";
 
+import HomePage from "./Components/HomePage/HomePage";
+import Header from "./Components/Layout/Header";
+import "./App.css";
+
 export default function App() {
   useEffect(() => {
     (async () => {
@@ -20,8 +24,13 @@ export default function App() {
 
   return (
     <div>
+<<<<<<< HEAD
       <h1>asdklasjdlaksjd</h1>
       <button>Stuff</button>
+=======
+      <Header />
+      <HomePage />
+>>>>>>> 25a030092698b6fdcac03adc39f5b10c918672b3
     </div>
   );
 }
