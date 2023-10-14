@@ -3,6 +3,7 @@ import axios from "axios";
 
 import HomePage from "./Components/HomePage/HomePage";
 import Header from "./Components/Layout/Header";
+import "./App.css";
 
 export default function App() {
   useEffect(() => {

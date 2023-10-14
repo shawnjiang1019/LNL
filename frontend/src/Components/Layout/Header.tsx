@@ -48,26 +48,20 @@ export default function Header() {
 
   return (
     <div className="header-2">
+      <img
+        src="https://cdn3.vectorstock.com/i/1000x1000/29/27/note-music-colorful-rainbow-logo-icon-illus-vector-28932927.jpg"
+        alt=""
+        width={50}
+      />
+
       <a href="/" style={{ textDecoration: "none" }}>
         <div ref={allText} className="brand-name">
           <div ref={googleRef} className="brand-name-1">
-            STAR
+            Look &apos;n&nbsp;
           </div>
-          <div className="brand-name-2">&#8212;SA</div>
+          <div className="brand-name-2">Listen</div>
         </div>
       </a>
-
-      <form className="search-form" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder=""
-          value={input}
-          name="text"
-          className="search-input"
-          onChange={handleChange}
-        />
-        <Button className="search-button">Search</Button>
-      </form>
 
       <div className="profile-btn">
         <Button
@@ -75,7 +69,6 @@ export default function Header() {
           className="pfpbutton"
         >
           <Person2Icon />
-          Open
         </Button>
       </div>
 

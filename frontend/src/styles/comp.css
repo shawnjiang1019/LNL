@@ -1,10 +1,10 @@
-.header .menu-btn {
-  background-color: whitesmoke;
-  box-shadow: none;
-  color: black;
-  height: 100%;
-  margin-right: 0.7rem;
+.header-2 {
+  display: flex;
+  align-items: center;
+
+  background-color: white;
+  border: solid 1px lightgray;
+  padding: 0.5rem;
+  cursor: pointer;
 }
-.header .menu-btn:hover {
-  background-color: whitesmoke;
-}
+
