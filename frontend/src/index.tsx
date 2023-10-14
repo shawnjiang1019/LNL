@@ -4,6 +4,7 @@ import reportWebVitals from "./reportWebVitals";
 
 import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import ScanPage from "./Components/ScanPage/ScanPage";
 
 const router = createBrowserRouter([
   {
@@ -12,7 +13,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/asd",
-    element: <div>Hello world!</div>,
+    element: <ScanPage/>,
   },
 ]);
 
