@@ -1,21 +1,23 @@
 import Webcam from "react-webcam";
-import { useRef, useState, useCallback } from "react"; // import useRef
+import { useRef, useState, useCallback, useEffect } from "react"; // import useRef
 
 interface WebCamProps {
-  setSrc: any;
+  setSrc: (src: string) => void;
 }
 
 const WebCam = ({ setSrc }: WebCamProps) => {
   const webcamRef = useRef(null); // create a webcam instance
-  const [imgSrc, setImgSrc] = useState(null); // initialize it
+  const [imgSrc, setImgSrc] = useState(""); // initialize it
 
   // created capture function
   const capture = useCallback(() => {
-    const imageSrc = (webcamRef.current as any).getScreenshot();
+    const imageSrc: string = (webcamRef.current as any).getScreenshot();
     setImgSrc(imageSrc);
     setSrc(imageSrc);
-
     console.log(imageSrc);
+
+    const pureData = imageSrc.slice(imageSrc.indexOf(",") + 1);
+    console.log(pureData);
   }, [webcamRef]);
 
   return (

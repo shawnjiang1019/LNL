@@ -13,7 +13,7 @@ export default function ScanPage() {
   
   return (
     <div>
-      <WebCam setSrc={setSrc}/>
+      <WebCam setSrc={setSrc} />
       {imgSrc && <div>{imgSrc}</div>}
       {imgSrc && <img src={imgSrc}/>}
       <h1>{songs}</h1>
