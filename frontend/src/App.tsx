@@ -24,13 +24,8 @@ export default function App() {
 
   return (
     <div>
-<<<<<<< HEAD
-      <h1>asdklasjdlaksjd</h1>
-      <button>Stuff</button>
-=======
       <Header />
       <HomePage />
->>>>>>> 25a030092698b6fdcac03adc39f5b10c918672b3
     </div>
   );
 }

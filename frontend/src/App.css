@@ -2,28 +2,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-<<<<<<< HEAD
-  box-sizing: border-box;
-  background-color: #5FE474;
-}
-
-
-.button {
-  all: unset;
-  align-items: flex-start;
-  background-color: #5FE474;
-  border-radius: 8px;
-  box-sizing: border-box;
-  display: inline-flex;
-  gap: 10px;
-  overflow: hidden;
-  padding: 19px 32px;
-  position: relative;
-}
-
-.div {
-  background-color: #5FE474;
-=======
   transition: 0.3s ease;
 }
 
@@ -132,5 +110,4 @@ html {
   height: 60vh;
   padding: 1rem;
   background-color: gray;
->>>>>>> 25a030092698b6fdcac03adc39f5b10c918672b3
 }
