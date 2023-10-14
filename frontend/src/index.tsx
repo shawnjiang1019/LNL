@@ -5,6 +5,8 @@ import reportWebVitals from "./reportWebVitals";
 import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ScanPage from "./Components/ScanPage/ScanPage";
+import PromptPage from "./Components/PromptPage/PromptPage";
+
 
 const router = createBrowserRouter([
   {
@@ -12,9 +14,14 @@ const router = createBrowserRouter([
     element: <App />,
   },
   {
-    path: "/asd",
+    path: "/face",
     element: <ScanPage/>,
   },
+  {
+    path: "/prompt",
+    element: <PromptPage/>
+  }
+
 ]);
 
 const root = ReactDOM.createRoot(
