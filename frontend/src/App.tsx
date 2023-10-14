@@ -21,6 +21,7 @@ export default function App() {
   return (
     <div>
       <h1>asdklasjdlaksjd</h1>
+      <button>Stuff</button>
     </div>
   );
 }
