@@ -6,6 +6,6 @@ import WebCam from './WebCam';
 
 export default function ScanPage() {
   return (
-    <Webcam/>
+    <WebCam/>
   )
 }
