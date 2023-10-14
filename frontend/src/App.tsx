@@ -1,4 +1,4 @@
-import "./App.css";
+import Camera from "./Camera";
 
 export default function App() {
   return (
