@@ -128,10 +128,13 @@ def get_top():
 		for i in range(12):
 			curGroup = sp.recommendations(limit=5, seed_tracks=ids[i*5:5+i*5])['tracks']
 			for ind, item in enumerate(curGroup):
+				song_id = item['id']
 				val = item['name']
 				results.append(val)
+				ids.append(song_id)
 
-	data = {'songs': results}
+	tmp = [[name, song_id] for name, song_id in zip(results, ids)]	
+	data = {'songs': tmp}
 	songs = data
 	return redirect('http://localhost:3000')
 
