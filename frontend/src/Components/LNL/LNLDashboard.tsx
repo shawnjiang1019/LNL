@@ -8,10 +8,16 @@ export default function LNLDashboard() {
       <LNLHeader>
         <div>Utiliy menu coming...</div>
         <div>
-          <Button variant="contained" href="/face">
+          <Button
+          className=""
+            variant="contained"
+            color="inherit"
+            style={{ color: "black" }}
+            href="/face"
+          >
             Face
           </Button>
-          <Button variant="contained">asd</Button>
+          <Button variant="contained">Prompt</Button>
         </div>
       </LNLHeader>
 

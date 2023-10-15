@@ -24,7 +24,7 @@ export default function HomePage({}: HomePageProps) {
         <div className="side right-side">
           <img
             className="dashboard-img"
-            src="https://images.ctfassets.net/9haz2glq4wt0/3xY2T0RH0qoiyJWD0SS0CI/b4b3949bdf1420e9c34200f6d7429a12/1_14H3oKuTWKAhO95WRu3xzA.png"
+            src="https://wallpapers.com/images/high/neon-purple-gospel-musical-notes-vdtcr7od76w200ah.webp"
           />
         </div>
       </div>
@@ -34,7 +34,7 @@ export default function HomePage({}: HomePageProps) {
           <div className="side right-side">
             <img
               className="dashboard-img"
-              src="https://images.ctfassets.net/9haz2glq4wt0/3xY2T0RH0qoiyJWD0SS0CI/b4b3949bdf1420e9c34200f6d7429a12/1_14H3oKuTWKAhO95WRu3xzA.png"
+              src="https://wallpapers.com/images/high/neon-purple-gospel-musical-notes-vdtcr7od76w200ah.webp"
               // width="500"
             />
           </div>
