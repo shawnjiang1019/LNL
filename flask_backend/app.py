@@ -97,11 +97,18 @@ def get_token():
 
 def create_spotify_oauth():
 	return SpotifyOAuth(
-			client_id="788b043aa24f420987c64403b8e408d1",
-			client_secret="77e16525ae6a4fce86c3ac70d7ce4f6d",
+			client_id="64dcdef859fc49ad85f7dbfa9c74adeb",
+			client_secret="9099370bf77648a3b792c2eeb4333e23",
 			redirect_uri=url_for('authorize', _external=True),
-			scope="user-library-read user-top-read")
+			scope="user-library-read user-top-read playlist-read-private playlist-read-collaborative playlist-modify-private playlist-modify-public")
 
+
+@app.route('/get_token')
+def get_cache():
+	with open(".cache") as f:
+		data = json.load(f)
+	access_token = data["access_token"]
+	return access_token
 
 @app.route('/top')
 def get_top():
@@ -111,7 +118,7 @@ def get_top():
 	if not authorized:
 		return redirect('/')
 	sp = spotipy.Spotify(auth=session.get('token_info').get('access_token'))
-	
+
 	results = []
 	ids = []
 	for i in range(10):
@@ -122,7 +129,7 @@ def get_top():
 			song_id = item['id']
 			ids.append(song_id)
 			results.append(val)
-	
+
 	### Recomendations
 	for y in range(2):
 		for i in range(12):
@@ -133,11 +140,10 @@ def get_top():
 				results.append(val)
 				ids.append(song_id)
 
-	tmp = [[name, song_id] for name, song_id in zip(results, ids)]	
-	data = {'songs': tmp}
+	tmp = [[name, song_id] for name, song_id in zip(results, ids)]    
+	data = {'songs': tmp[:100]}
 	songs = data
 	return redirect('http://localhost:3000')
-
 
 if __name__ == "__main__":
 	app.run(debug = True)
