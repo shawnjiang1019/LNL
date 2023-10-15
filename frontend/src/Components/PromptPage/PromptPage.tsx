@@ -4,7 +4,6 @@ import TextareaAutosize from "@mui/material/TextareaAutosize";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router";
 
-
 export default function PromptPage() {
   const [prompt, setPrompt] = useState("");
   const [promptHelper, setPromptHelper] = useState("");
@@ -30,19 +29,6 @@ export default function PromptPage() {
   };
 
   return (
-<<<<<<< HEAD
-    <div>
-        <form>
-      <fieldset>
-         <label>
-           <p>Tell us about your emotions</p>
-           <input name="name" />
-         </label>
-       </fieldset>
-       <button type="submit">Submit</button>
-      </form>
-      
-=======
     <div className="prompt-page">
       <div>
         <h1 style={{ marginBottom: ".7rem" }}>Create your prompt</h1>
@@ -84,7 +70,6 @@ export default function PromptPage() {
           }}
         />
       </div>
->>>>>>> c261b11bf97bc381f9e1ffed149d8f24a0735e10
     </div>
   );
 }
