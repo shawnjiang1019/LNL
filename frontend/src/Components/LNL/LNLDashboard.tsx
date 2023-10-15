@@ -9,7 +9,9 @@ export default function LNLDashboard({}: LNLDashboardProps) {
     localStorage.removeItem("imgSrc");
   };
 
-  const handleScan = () => {};
+  const handleScan = () => {
+    
+  };
 
   return (
     <div className="dashboard-page">
