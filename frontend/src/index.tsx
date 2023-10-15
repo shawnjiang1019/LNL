@@ -9,6 +9,7 @@ import ScanPage from "./Components/ScanPage/ScanPage";
 import PromptPage from "./Components/PromptPage/PromptPage";
 import LNLDashboard from "./Components/LNL/LNLDashboard";
 import Header from "./Components/Layout/Header";
+import Footer from "./Components/Layout/Footer";
 
 const router = createBrowserRouter([
   {

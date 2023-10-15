@@ -1,4 +1,5 @@
 import Button from "@mui/material/Button";
+import Footer from "../Layout/Footer";
 
 interface HomePageProps {}
 
@@ -50,6 +51,8 @@ export default function HomePage({}: HomePageProps) {
           </div>
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 }
