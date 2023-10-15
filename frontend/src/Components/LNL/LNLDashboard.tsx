@@ -27,14 +27,21 @@ export default function LNLDashboard() {
             <h1>Songs</h1>
             <Input
               type={"text"}
-              style={{ width: "90%", marginTop: ".5rem" }}
-              placeholder="Search projects (Coming soon..)"
+              style={{
+                width: "100%",
+                marginTop: ".5rem",
+                color: "white",
+                backgroundColor: "#021726",
+              }}
+              placeholder="Search songs (Coming soon..)"
               // disabled
               onClick={() => alert("being made")}
             />
 
-            <h1>testing</h1>
-            <p>asdjskkljasdlaj</p>
+            <div>
+              <h1>testing</h1>
+              <p>asdjskkljasdlaj</p>
+            </div>
           </DashboardPanel>
         </LNLDashboardContainer>
       </DashboardContainer>
@@ -49,7 +56,9 @@ const DashboardContainer = styled.div`
   position: relative;
   min-height: ${DASHBOARD_MIN_HEIGHT};
   width: 100%;
-  background-color: #d3d3d3c7;
+  background-color: #02101b;
+  color: white;
+
   h1 {
     margin: 0;
     padding: 0;
@@ -58,7 +67,6 @@ const DashboardContainer = styled.div`
 
 const LNLHeader = styled.header`
   display: flex;
-  height: 8vh;
   padding: 0.5rem;
   background-color: #1e2530;
   border-top: 1px solid whitesmoke;
@@ -76,7 +84,7 @@ const DashboardSidebar = styled.section`
   width: 12.5vw;
   height: ${DASHBOARD_MIN_HEIGHT};
   color: white;
-  background-color: #2c3645;
+  background-color: #021b2d;
   border-bottom: 1px solid white;
   border-right: 1px solid white;
   padding: 1rem;
