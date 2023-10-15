@@ -6,9 +6,9 @@ export default function ScanPage() {
   const [songs, results] = useState('');
   
   useEffect(() => {
-    fetch('/top')
-      .then(data => data.json())
-      .then(data => results(data.songs));
+    // fetch("http://localhost:3001").then(d => d.json()).then(d => results(d));
+    // .then((data) => data.json())
+    // .then((data) => console.log(data));
   }, []);
   
 
