@@ -97,8 +97,8 @@ def get_token():
 
 def create_spotify_oauth():
 	return SpotifyOAuth(
-			client_id="19d2be7af5dd4e8eac7a40950acf6dc9",
-			client_secret="bd6ff756f53e4ae89054985ed85eab40",
+			client_id="788b043aa24f420987c64403b8e408d1",
+			client_secret="77e16525ae6a4fce86c3ac70d7ce4f6d",
 			redirect_uri=url_for('authorize', _external=True),
 			scope="user-library-read user-top-read")
 
@@ -133,7 +133,7 @@ def get_top():
 
 	data = {'songs': results}
 	songs = data
-	return jsonify(data)
+	return redirect('http://localhost:3000')
 
 
 if __name__ == "__main__":

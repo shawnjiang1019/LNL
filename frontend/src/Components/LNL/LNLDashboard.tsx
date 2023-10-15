@@ -1,5 +1,6 @@
 import Input from "@mui/material/Input";
 import Button from "@mui/material/Button";
+import axios from "axios";
 
 interface LNLDashboardProps {}
 export default function LNLDashboard({}: LNLDashboardProps) {
@@ -9,7 +10,15 @@ export default function LNLDashboard({}: LNLDashboardProps) {
     localStorage.removeItem("imgSrc");
   };
 
-  const handleScan = () => {};
+  const handleScan = async () => {
+    // console.log(localStorage.getItem('imgSrc'))
+
+    // const res = await axios.post("http://localhost:5500/input", {
+    //   prompt: localStorage.getItem("prompt"),
+    //   // description: localStorage.getItem("description"),
+    //   imgSrc: localStorage.getItem("imgSrc"),
+    // })
+  };
 
   return (
     <div className="dashboard-page">
