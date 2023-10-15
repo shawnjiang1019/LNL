@@ -4,6 +4,7 @@ import axios from "axios";
 import HomePage from "./Components/HomePage/HomePage";
 import Header from "./Components/Layout/Header";
 import "./App.css";
+import Spotify from "react-spotify-embed"
 
 export default function App() {
   useEffect(() => {
@@ -12,7 +13,7 @@ export default function App() {
         "https://jsonplaceholder.typicode.com/todos/1"
       );
       console.log(data.data);
-
+ 
       // const p = await axios.post(
       //   "https://jsonplaceholder.typicode.com/todos/1",
       //   {
@@ -28,3 +29,4 @@ export default function App() {
     </div>
   );
 }
+
