@@ -1,0 +1,49 @@
+.dashboard-container {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #02101b;
+  color: "white";
+}
+.dashboard-container h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.lnl-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0.5rem;
+  background-color: #03121e;
+  border-top: 1px solid whitesmoke;
+  border-bottom: 1px solid white;
+  color: white;
+  font-size: 1.8rem;
+}
+
+.lnl-dashboard-container {
+  display: flex;
+  width: 100%;
+}
+
+.dashboard-sidebar {
+  width: 12.5vw;
+  height: 100vh;
+  color: white;
+  background-color: #021b2d;
+  border-bottom: 1px solid white;
+  border-right: 1px solid white;
+  padding: 1rem;
+}
+
+.dashboard-panel {
+  padding: 1rem;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.dashboard-panel {
+  color: white;
+}

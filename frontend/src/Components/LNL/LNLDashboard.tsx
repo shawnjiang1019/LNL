@@ -5,11 +5,11 @@ import Button from "@mui/material/Button";
 export default function LNLDashboard() {
   return (
     <div className="dashboard-page">
-      <LNLHeader>
+      <header className="lnl-header">
         <div>Utiliy menu coming...</div>
         <div>
           <Button
-          className=""
+            className=""
             variant="contained"
             color="inherit"
             style={{ color: "black" }}
@@ -19,23 +19,20 @@ export default function LNLDashboard() {
           </Button>
           <Button variant="contained">Prompt</Button>
         </div>
-        <div style={{float: 'right'}}>
+        <div style={{ float: "right" }}>
           <a href="/face">
-            <Button variant="contained"  >
-              Scan
-            </Button>
+            <Button variant="contained">Scan</Button>
           </a>
         </div>
-        
-      </LNLHeader>
+      </header>
 
-      <DashboardContainer>
-        <LNLDashboardContainer>
-          <DashboardSidebar>
+      <div className="dashboard-container">
+        <div className="lnl-dashboard-container">
+          <div className="dashboard-sidebar">
             <div style={{ fontSize: "1.2rem" }}>Utility sidebar coming...</div>
-          </DashboardSidebar>
+          </div>
 
-          <DashboardPanel>
+          <div className="dashboard-panel">
             <h1>Songs</h1>
             <Input
               type={"text"}
@@ -54,60 +51,9 @@ export default function LNLDashboard() {
               <h1>testing</h1>
               <p>asdjskkljasdlaj</p>
             </div>
-          </DashboardPanel>
-        </LNLDashboardContainer>
-      </DashboardContainer>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
-
-// will contain utility menu for settings like changing password
-const DASHBOARD_MIN_HEIGHT = "100vh";
-
-const DashboardContainer = styled.div`
-  position: relative;
-  min-height: ${DASHBOARD_MIN_HEIGHT};
-  width: 100%;
-  background-color: #02101b;
-  color: white;
-
-  h1 {
-    margin: 0;
-    padding: 0;
-  }
-`;
-
-const LNLHeader = styled.header`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  padding: 0.5rem;
-  background-color: #03121e;
-  border-top: 1px solid whitesmoke;
-  border-bottom: 1px solid white;
-  color: white;
-  font-size: 1.8rem;
-`;
-
-// after-authorization styles
-const LNLDashboardContainer = styled.div`
-  display: flex;
-  width: 100%;
-`;
-
-const DashboardSidebar = styled.section`
-  width: 12.5vw;
-  height: ${DASHBOARD_MIN_HEIGHT};
-  color: white;
-  background-color: #021b2d;
-  border-bottom: 1px solid white;
-  border-right: 1px solid white;
-  padding: 1rem;
-`;
-
-const DashboardPanel = styled.section`
-  padding: 1rem;
-  flex-grow: 1;
-  overflow-y: auto;
-`;

@@ -54,6 +54,10 @@ html {
 }
 .brand-name-2 {
   font-size: 30px;
+  color: white;
+}
+.brand-name-2:hover {
+  color: black;
 }
 
 .col {
