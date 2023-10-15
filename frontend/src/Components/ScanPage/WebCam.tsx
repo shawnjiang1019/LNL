@@ -23,7 +23,7 @@ const WebCam = ({ setSrc }: WebCamProps) => {
 
     const rawImg = imageSrc.slice(imageSrc.indexOf(",") + 1);
     setImgSrc(rawImg);
-    localStorage.setItem("imgSrc", imgSrc);
+    localStorage.setItem("imgSrc", rawImg);
     navigate("/lnl");
   }, [webcamRef]);
 
