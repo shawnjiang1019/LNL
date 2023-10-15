@@ -8,13 +8,12 @@ import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 import time
 
-global songs
-songs = {}
-
 app = Flask(__name__)
 app.secret_key = 'wtryterwe3yerwegdhgyugfcybwvttt315v532132v51k532vcrwqrc'
 
 ### Spotify
+global songs
+songs = {}
 
 @app.route('/home')
 def home():
@@ -37,6 +36,12 @@ def input():
 	else:
 		return 'ERROR input f-n'
 		raise ValueError('ERROR input f-n')
+
+@app.route('/get_songs')
+def get_songs():
+	if songs:
+		return jsonify(songs)
+	return "doesn't work"
 
 def predict_emotions(image):
 	emotion_model = FER()
@@ -62,7 +67,6 @@ def authorize():
 
 @app.route('/logout')
 def logout():
-	print(session)
 	for key in list(session.keys()):
 		session.pop(key)
 	session.clear()
@@ -70,53 +74,47 @@ def logout():
 
 # Checks to see if token is valid and gets a new token if not
 def get_token():
-    token_valid = False
-    token_info = session.get("token_info", {})
+	token_valid = False
+	token_info = session.get("token_info", {})
 
-    # Checking if the session already has a token stored
-    if not (session.get('token_info', False)):
-        token_valid = False
-        return token_info, token_valid
+	# Checking if the session already has a token stored
+	if not (session.get('token_info', False)):
+		token_valid = False
+		return token_info, token_valid
 
-    # Checking if token has expired
-    now = int(time.time())
-    is_token_expired = session.get('token_info').get('expires_at') - now < 60
+	# Checking if token has expired
+	now = int(time.time())
+	is_token_expired = session.get('token_info').get('expires_at') - now < 60
 
-    # Refreshing token if it has expired
-    if (is_token_expired):
-        sp_oauth = create_spotify_oauth()
-        token_info = sp_oauth.refresh_access_token(session.get('token_info').get('refresh_token'))
+	# Refreshing token if it has expired
+	if (is_token_expired):
+		sp_oauth = create_spotify_oauth()
+		token_info = sp_oauth.refresh_access_token(session.get('token_info').get('refresh_token'))
 
-    token_valid = True
-    return token_info, token_valid
+	token_valid = True
+	return token_info, token_valid
 
 
 def create_spotify_oauth():
-		return SpotifyOAuth(
-				client_secret="9874bbeef1dc4b068f1d8e3e4cb40a17",
-				client_id="34def91b71064942b5f1ad13509129a3",
-				redirect_uri=url_for('authorize', _external=True),
-				scope="user-library-read user-top-read")
+	return SpotifyOAuth(
+			client_id="19d2be7af5dd4e8eac7a40950acf6dc9",
+			client_secret="bd6ff756f53e4ae89054985ed85eab40",
+			redirect_uri=url_for('authorize', _external=True),
+			scope="user-library-read user-top-read")
 
-@app.route('/get_songs')
-def get_songs():
-	if songs:
-			return jsonify(songs)
-	return 'DUPA'
 
 @app.route('/top')
 def get_top_100():
 	global songs
 	session['token_info'], authorized = get_token()
-	print(get_token())
 	session.modified = True
 	if not authorized:
 		return redirect('/')
 	sp = spotipy.Spotify(auth=session.get('token_info').get('access_token'))
-		
+	
 	results = []
 	ids = []
-	for i in range(3):
+	for i in range(4):
 		curGroup = sp.current_user_top_tracks(limit = 20, time_range='short_term', offset = 20 * i)['items']
 
 		for ind, item in enumerate(curGroup):
@@ -124,16 +122,16 @@ def get_top_100():
 			song_id = item['id']
 			ids.append(song_id)
 			results.append(val)
+	
 	### Recomendations
-	for y in range(1):
-			for i in range(12):
-					curGroup = sp.recommendations(limit=5, seed_tracks=ids[i*5:5+i*5])['tracks']
-					for ind, item in enumerate(curGroup):
-						val = item['name']
-						results.append(val)
+	for y in range(2):
+		for i in range(12):
+			curGroup = sp.recommendations(limit=5, seed_tracks=ids[i*5:5+i*5])['tracks']
+			for ind, item in enumerate(curGroup):
+				val = item['name']
+				results.append(val)
 
 	data = {'songs': results}
-	
 	songs = data
 	return jsonify(data)
 
