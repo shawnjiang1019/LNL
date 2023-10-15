@@ -13,7 +13,6 @@ html {
 }
 
 .app {
-  --header-background: #acacac;
   --header-height: 5rem;
 
   --clean-box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%),
@@ -38,8 +37,7 @@ html {
   display: flex;
   align-items: center;
 
-  background-color: white;
-  border: solid 1px lightgray;
+  background-color: #021625;
   padding: 0.5rem;
 }
 
@@ -116,6 +114,8 @@ html {
 .homepage-panel-1 {
   display: flex;
   justify-content: space-between;
+
+  background-color: #020a10;
 }
 
 .side {
@@ -134,6 +134,7 @@ html {
 .headertop {
   font-size: 4rem;
   margin-bottom: 1rem;
+  color: white;
 }
 
 .headerbot {
