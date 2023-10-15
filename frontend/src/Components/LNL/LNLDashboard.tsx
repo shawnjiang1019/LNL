@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Input from "@mui/material/Input";
+import Button from "@mui/material/Button";
 
 export default function LNLDashboard() {
   return (
@@ -13,8 +14,17 @@ export default function LNLDashboard() {
             fontSize: "1.8rem",
           }}
         >
+          
           Utiliy menu coming...
         </div>
+        <div style={{float: 'right'}}>
+          <a href="/face">
+            <Button variant="contained"  >
+              Scan
+            </Button>
+          </a>
+        </div>
+        
       </LNLHeader>
 
       <DashboardContainer>
