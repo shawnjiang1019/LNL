@@ -1,7 +1,8 @@
 import Webcam from "react-webcam";
-import { useRef, useState, useCallback, useEffect } from "react"; // import useRef
+import { useRef, useState, useCallback } from "react"; // import useRef
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
 
 interface WebCamProps {
   setSrc: (s: string) => void;
@@ -24,6 +25,8 @@ const WebCam = ({ setSrc }: WebCamProps) => {
     const rawImg = imageSrc.slice(imageSrc.indexOf(",") + 1);
     setImgSrc(rawImg);
     localStorage.setItem("imgSrc", rawImg);
+    toast.success("Photo captured!");
+
     navigate("/lnl");
   }, [webcamRef]);
 

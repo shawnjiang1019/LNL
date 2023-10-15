@@ -9,7 +9,10 @@ import ScanPage from "./Components/ScanPage/ScanPage";
 import PromptPage from "./Components/PromptPage/PromptPage";
 import LNLDashboard from "./Components/LNL/LNLDashboard";
 import Header from "./Components/Layout/Header";
-import Footer from "./Components/Layout/Footer";
+// import Footer from "./Components/Layout/Footer";
+
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +41,7 @@ root.render(
   <React.StrictMode>
     <Header />
     <RouterProvider router={router} />
+    <ToastContainer />
   </React.StrictMode>
 );
 

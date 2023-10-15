@@ -1,9 +1,21 @@
+import React, { useState, useEffect } from "react";
+
 import Input from "@mui/material/Input";
 import Button from "@mui/material/Button";
+
+import { toast } from "react-toastify";
 import axios from "axios";
 
 interface LNLDashboardProps {}
 export default function LNLDashboard({}: LNLDashboardProps) {
+  const [prompt, setPrompt] = useState("");
+  const [imgSrc, setImgSrc] = useState("");
+
+  useEffect(() => {
+    setPrompt(localStorage.getItem("prompt") as string);
+    setImgSrc(localStorage.getItem("imgSrc") as string);
+  }, []);
+
   const handleReset = () => {
     localStorage.removeItem("prompt");
     localStorage.removeItem("description");
@@ -11,12 +23,29 @@ export default function LNLDashboard({}: LNLDashboardProps) {
   };
 
   const handleScan = async () => {
+    if (!imgSrc) {
+      alert("Please add a photo");
+      return;
+    }
+    if (!prompt) {
+      alert("Please add a prompt");
+      return;
+    }
+
     // console.log(localStorage.getItem('imgSrc'))
     // const res = await axios.post("http://localhost:5500/input", {
     //   prompt: localStorage.getItem("prompt"),
     //   // description: localStorage.getItem("description"),
     //   imgSrc: localStorage.getItem("imgSrc"),
     // })
+
+    const res = await axios.post("http://localhost:5500/getEmotions", {
+      payload: localStorage.getItem("imgSrc"),
+    });
+    console.log(res)
+
+    toast.info("Scanning...");
+    // toast.success("Done...");
   };
 
   return (
@@ -27,8 +56,8 @@ export default function LNLDashboard({}: LNLDashboardProps) {
           <Button
             className=""
             variant="contained"
-            color="inherit"
-            style={{ color: "black", width: "6rem" }}
+            color={imgSrc ? "success" : "inherit"}
+            style={{ color: imgSrc ? "white" : "black", width: "6rem" }}
             href="/face"
           >
             Face
@@ -36,8 +65,8 @@ export default function LNLDashboard({}: LNLDashboardProps) {
           <Button
             className=""
             variant="contained"
-            color="inherit"
-            style={{ color: "black", width: "6rem" }}
+            color={prompt ? "success" : "inherit"}
+            style={{ color: prompt ? "white" : "black", width: "6rem" }}
             href="/prompt"
           >
             Prompt
@@ -56,8 +85,12 @@ export default function LNLDashboard({}: LNLDashboardProps) {
           <Button
             className=""
             variant="contained"
-            color="success"
-            style={{ color: "white", padding: "0.5rem 4rem", width: "6rem" }}
+            style={{
+              backgroundColor: imgSrc && prompt ? "green" : "white",
+              color: imgSrc && prompt ? "white" : "black",
+              padding: "0.5rem 4rem",
+              width: "6rem",
+            }}
             onClick={handleScan}
           >
             Scan

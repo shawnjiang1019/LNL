@@ -4,6 +4,8 @@ import TextareaAutosize from "@mui/material/TextareaAutosize";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router";
 
+import { toast } from "react-toastify";
+
 export default function PromptPage() {
   const [prompt, setPrompt] = useState("");
   const [promptHelper, setPromptHelper] = useState("");
@@ -22,6 +24,7 @@ export default function PromptPage() {
     localStorage.setItem("prompt", prompt);
     localStorage.setItem("description", description);
 
+    toast.success("Prompt recorded!");
     navigate("/lnl");
     setTimeout(() => {
       console.log("hmmmm");

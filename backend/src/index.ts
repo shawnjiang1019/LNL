@@ -55,7 +55,9 @@ app.post('/getEmotions', async (req: Request, res: Response) => {
     res.send("Error, something wrong happened")
     return "There was an error with sending data as body"
   }
+  console.log('hi')
   try {
+    console.log('hi2')
     const response = await fetch("http://127.0.0.1:5000/input", 
     {
       method: 'POST',
@@ -77,14 +79,14 @@ app.post('/getEmotions', async (req: Request, res: Response) => {
     
     Here are the top ${size} songs:
     [${songs.songs}]
-        
+    
     Respond only in this json format:
     {
       "songs": [${songs.songs.map((song, i) => `song ${i + 1}`)}]
     }
-
+    
     Make sure to have at least 50 songs in response!
-            
+    
     DON'T say "by <author name>".`
     const bestSongs = await getBestSongs(message)
     if (bestSongs === null) {
@@ -93,6 +95,7 @@ app.post('/getEmotions', async (req: Request, res: Response) => {
     }
     res.json(bestSongs);
   } catch(e) {
+    console.log('hi3')
     res.send(e)
   }
   
