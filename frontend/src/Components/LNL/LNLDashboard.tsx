@@ -9,6 +9,8 @@ export default function LNLDashboard({}: LNLDashboardProps) {
     localStorage.removeItem("imgSrc");
   };
 
+  const handleScan = () => {};
+
   return (
     <div className="dashboard-page">
       <header className="lnl-header">
@@ -48,7 +50,7 @@ export default function LNLDashboard({}: LNLDashboardProps) {
             variant="contained"
             color="success"
             style={{ color: "white", padding: "0.5rem 4rem", width: "6rem" }}
-            href="/scan"
+            onClick={handleScan}
           >
             Scan
           </Button>
