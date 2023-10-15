@@ -273,9 +273,7 @@ async function getBestSongs(prompt: string): Promise<Songs | null> {
           messages: [{"role": "user", "content": prompt}],
           temperature: 0.6
       }); 
-      const temp = JSON.parse(response.choices[0].message.content!) as Songs
-      console.log(temp)
-      return temp
+      return JSON.parse(response.choices[0].message.content!) as Songs
   } catch(e) {
     console.error(e)
     return null
@@ -311,7 +309,6 @@ app.get("/createPlaylist", async (req: Request, res: Response) => {
       
     }) 
     const playlist: Playlist = await playlistResponse.json()
-    console.log(playlist)
 
     const playlistId = playlist.id
     let uris: Array<string> = songs.songs.map((e, i) => "spotify:track:" + e[1])
@@ -329,7 +326,7 @@ app.get("/createPlaylist", async (req: Request, res: Response) => {
       }
     )
     console.log(await finalResponse.json())
-      res.json({ message: "Wohoooo!!, it workeed!!!!" })
+      res.json({ id: playlistId })
     } catch(e) {
       res.send(e)
     }
