@@ -8,6 +8,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ScanPage from "./Components/ScanPage/ScanPage";
 import PromptPage from "./Components/PromptPage/PromptPage";
 import LNLDashboard from "./Components/LNL/LNLDashboard";
+import Header from "./Components/Layout/Header";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,7 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
+    <Header />
     <RouterProvider router={router} />
   </React.StrictMode>
 );

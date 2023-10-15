@@ -15,8 +15,8 @@ export default function HomePage({}: HomePageProps) {
           </div>
 
           <a href="/face">
-            <Button variant="contained" className="notes-direct">
-              Take picture
+            <Button variant="contained" className="lnl-direct">
+              Start Listening
             </Button>
           </a>
         </div>
