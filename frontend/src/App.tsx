@@ -24,6 +24,7 @@ export default function App() {
 
   return (
     <div>
+      <Header />
       <HomePage />
     </div>
   );
