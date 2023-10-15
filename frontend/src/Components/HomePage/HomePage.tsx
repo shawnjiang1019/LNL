@@ -14,7 +14,7 @@ export default function HomePage({}: HomePageProps) {
             Create local and personally curated music and from any device.
           </div>
 
-          <a href="/face">
+          <a href="/lnl">
             <Button variant="contained" className="lnl-direct">
               Start Listening
             </Button>
