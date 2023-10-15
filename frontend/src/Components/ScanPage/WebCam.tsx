@@ -21,14 +21,11 @@ const WebCam = ({ setSrc }: WebCamProps) => {
     // setImgSrc(imageSrc);
     // console.log("imgsrc", imageSrc);
 
-    setImgSrc(imageSrc.slice(imageSrc.indexOf(",") + 1));
+    const rawImg = imageSrc.slice(imageSrc.indexOf(",") + 1);
+    setImgSrc(rawImg);
+    localStorage.setItem("imgSrc", imgSrc);
     navigate("/lnl");
   }, [webcamRef]);
-
-  useEffect(() => {
-    // console.log(imgSrc);
-    localStorage.setItem("imgSrc", imgSrc);
-  }, [imgSrc]);
 
   return (
     <div className="webcam-container">
