@@ -40,9 +40,10 @@ export default function LNLDashboard({}: LNLDashboardProps) {
     // })
 
     const res = await axios.post("http://localhost:5500/getEmotions", {
-      payload: localStorage.getItem("imgSrc"),
+      // payload: localStorage.getItem("imgSrc"),
+      payload: "askdjaslkdjalkdj",
     });
-    console.log(res)
+    console.log(res);
 
     toast.info("Scanning...");
     // toast.success("Done...");
