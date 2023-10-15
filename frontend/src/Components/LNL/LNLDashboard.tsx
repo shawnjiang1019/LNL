@@ -38,79 +38,68 @@ export default function LNLDashboard({ }: LNLDashboardProps) {
       return;
     }
 
-    // await axios.get('https://jsonplaceholder.typicode.com/todos/1')
-    //   .then(data => console.log(data))
+    await axios.get('https://jsonplaceholder.typicode.com/todos/1')
+      .then(data => console.log(data))
 
-    // console.log(localStorage.getItem('imgSrc'))
-    // const res = await axios.post("http://localhost:5500/input", {
-    //   prompt: localStorage.getItem("prompt"),
-    //   // description: localStorage.getItem("description"),
-    //   imgSrc: localStorage.getItem("imgSrc"),
-    // })
+    console.log(localStorage.getItem('imgSrc'))
+    const res = await axios.post("http://localhost:5500/input", {
+      prompt: localStorage.getItem("prompt"),
+      // description: localStorage.getItem("description"),
+      imgSrc: localStorage.getItem("imgSrc"),
+    })
 
-    // console.log('asd', localStorage.getItem("imgSrc"))
+    console.log('asd', localStorage.getItem("imgSrc"))
 
     toast.info("Scanning...");
 
     let imgSongs = []
-    // try {
-    //   console.log(localStorage.getItem("imgSrc"))
-    //   const imageRes = await fetch("http://localhost:5500/getEmotions", {
-    //     method: "POST",
-    //     headers: {
-    //       'Content-Type': 'application/json'
-    //     },
-    //     body:
-    //       JSON.stringify({
-    //         payload: localStorage.getItem("imgSrc")
-    //       })
-    //   });
-    //   const imageSongs = await imageRes.json()
-    //   imgSongs = imageSongs
-    //   setBestImgSongs(imageSongs)
-    //   console.log(imgSongs);
-    // } catch (e) {
-    //   console.log(e)
-    // }
-    imgSongs = [
-      ["Sad!", "3ee8Jmje8o58CHK66QrVC2"],
-      ["Hurt", "3n3Ppam7vgaVa1iaRUc9Lp"],
-      ["Numb", "7k6IzwMGpxnRghE7YosnXT"],
-      ["Boulevard of Broken Dreams", "3ZffCQKLFLUvYM59XKLbVm"],
-      ["Creep", "6b2oQwSGFkzsMtQruIWm2p"],
-      ["Everybody Hurts", "4KcL0L9mJXqWLKqPYi5g1v"],
-      ["The Sound of Silence", "0B6BeEUd6UwFlbsHMQKjob"],
-      ["Someone Like You", "4kflIGfjdZJW4ot2ioixTB"],
-      ["Fix You", "7LVHVU3tWfcxj5aiPFEW4Q"],
-      ["Hallelujah", "7H7mJJK4b3B4V7B1RNI6FC"],
-    ]
+    try {
+      console.log(localStorage.getItem("imgSrc"))
+      const imageRes = await fetch("http://localhost:5500/getEmotions", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body:
+          JSON.stringify({
+            payload: localStorage.getItem("imgSrc")
+          })
+      });
+      const imageSongs = await imageRes.json()
+      imgSongs = imageSongs
+      setBestImgSongs(imageSongs)
+      console.log(imgSongs);
+    } catch (e) {
+      console.log(e)
+    }
+  
 
-    // try {
-    //   console.log('asd', localStorage.getItem("prompt"))
-    //   const textRes = await fetch("http://localhost:5500/getSongsFromText", {
-    //     method: "POST",
-    //     body: JSON.stringify({
-    //       prompt: localStorage.getItem("prompt")
-    //     }),
-    //     headers: {
-    //       'Content-Type': 'application/json'
-    //     },
-    //   });
-    //   const textSongs = await textRes.json()
-    //   setBestTextSongs(textSongs)
-    //   console.log(textSongs);
-    // } catch (e) {
-    //   console.log(e)
-    // }
+    try {
+      console.log('asd', localStorage.getItem("prompt"))
+      const textRes = await fetch("http://localhost:5500/getSongsFromText", {
+        method: "POST",
+        body: JSON.stringify({
+          prompt: localStorage.getItem("prompt")
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      });
+      const textSongs = await textRes.json()
+      setBestTextSongs(textSongs)
+      console.log(textSongs);
+    } catch (e) {
+      console.log(e)
+    }
 
-    // const uniqueSongs = Array.from(new Set<string>([
-    //   ...bestImgSongs.map(song => song[1]), 
-    //   // ...bestTextSongs.map(song => song[1])
-    // ]))
-    // const topSongs = [
-    //   ...bestImgSongs, 
-    //   // ...bestTextSongs
-    // ].filter(song => uniqueSongs.includes(song[1]))
+    const uniqueSongs = Array.from(new Set<string>([
+      ...bestImgSongs.map(song => song[1]), 
+      // ...bestTextSongs.map(song => song[1])
+    ]))
+    const topSongs = [
+      ...bestImgSongs, 
+      // ...bestTextSongs
+    ].filter(song => uniqueSongs.includes(song[1]))
 
     console.log('top songs', imgSongs)
     try {
@@ -123,7 +112,7 @@ export default function LNLDashboard({ }: LNLDashboardProps) {
       });
       const playlist = await playlistRes.json()
       console.log(playlist);
-      await new Promise(r => setTimeout(r, 2000));
+      await new Promise(r => setTimeout(r, 4000));
       setSpotifyId(playlist.id)
     } catch (e) {
       console.log(e)
