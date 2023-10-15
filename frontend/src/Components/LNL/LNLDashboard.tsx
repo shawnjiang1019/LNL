@@ -1,8 +1,14 @@
-import styled from "styled-components";
 import Input from "@mui/material/Input";
 import Button from "@mui/material/Button";
 
-export default function LNLDashboard() {
+interface LNLDashboardProps {}
+export default function LNLDashboard({}: LNLDashboardProps) {
+  const handleReset = () => {
+    localStorage.removeItem("prompt");
+    localStorage.removeItem("description");
+    localStorage.removeItem("imgSrc");
+  };
+
   return (
     <div className="dashboard-page">
       <header className="lnl-header">
@@ -12,17 +18,40 @@ export default function LNLDashboard() {
             className=""
             variant="contained"
             color="inherit"
-            style={{ color: "black" }}
+            style={{ color: "black", width: "6rem" }}
             href="/face"
           >
             Face
           </Button>
-          <Button variant="contained">Prompt</Button>
+          <Button
+            className=""
+            variant="contained"
+            color="inherit"
+            style={{ color: "black", width: "6rem" }}
+            href="/prompt"
+          >
+            Prompt
+          </Button>
         </div>
         <div style={{ float: "right" }}>
-          <a href="/face">
-            <Button variant="contained">Scan</Button>
-          </a>
+          <Button
+            variant="contained"
+            color="error"
+            style={{ color: "white", padding: "0.5rem 4rem", width: "6rem" }}
+            onClick={handleReset}
+          >
+            Reset
+          </Button>
+
+          <Button
+            className=""
+            variant="contained"
+            color="success"
+            style={{ color: "white", padding: "0.5rem 4rem", width: "6rem" }}
+            href="/scan"
+          >
+            Scan
+          </Button>
         </div>
       </header>
 
@@ -43,11 +72,10 @@ export default function LNLDashboard() {
                 backgroundColor: "#021726",
               }}
               placeholder="Search songs (Coming soon..)"
-              // disabled
               onClick={() => alert("being made")}
             />
 
-            <div>
+            <div style={{ marginTop: "10rem" }}>
               <h1>testing</h1>
               <p>asdjskkljasdlaj</p>
             </div>

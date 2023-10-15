@@ -1,3 +1,11 @@
+/* webcam */
+.webcam-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* look n listen dashboard */
 .dashboard-container {
   position: relative;
   min-height: 100vh;
@@ -46,4 +54,28 @@
 
 .dashboard-panel {
   color: white;
+}
+
+/* face/scan page */
+.scan-page {
+  background-color: #010d17;
+  /* padding: 3rem; */
+}
+
+/* 
+prompt page
+prompt page
+prompt page
+*/
+.prompt-page {
+  display: flex;
+
+  padding: 5rem;
+  background-color: #010d17;
+  color: whitesmoke;
+}
+.prompt-page .prompt-input {
+  width: 50vw;
+  background-color: darkgray;
+  border-radius: 0.5rem;
 }
