@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import WebCam from "./WebCam";
+import { bottom } from "@popperjs/core";
 
 export default function ScanPage() {
   const [imgSrc, setSrc] = useState('');
@@ -14,7 +15,7 @@ export default function ScanPage() {
 
   
   return (
-    <div>
+    <div style = {{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}} >
       <WebCam setSrc={setSrc} />
       {imgSrc && <div>{imgSrc}</div>}
       {imgSrc && <img src={imgSrc}/>}
