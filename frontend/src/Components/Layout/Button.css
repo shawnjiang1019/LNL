@@ -1,0 +1,25 @@
+.button  {
+    all: unset;
+    align-items: flex-start;
+    background-color: #5ee373;
+    border-radius: 8px;
+    box-sizing: border-box;
+    display: inline-flex;
+    gap: 10px;
+    overflow: hidden;
+    padding: 19px 32px;
+    position: relative;
+} 
+
+.button .text-wrapper {
+    color: #ffffff;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 26px;
+    margin-top: -1px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+  }
