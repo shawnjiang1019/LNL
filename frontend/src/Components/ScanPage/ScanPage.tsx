@@ -15,14 +15,17 @@ export default function ScanPage() {
 
   
   return (
-    <div style = {{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}} >
+    <body>
+      <div style = {{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}} >
       <WebCam setSrc={setSrc} />
       {imgSrc && <div>{imgSrc}</div>}
       {imgSrc && <img src={imgSrc}/>}
       <h1>{songs}</h1>
       
 
-    </div>
+      </div>
+    </body>
+    
     
   );
 }
