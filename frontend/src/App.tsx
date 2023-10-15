@@ -24,7 +24,10 @@ export default function App() {
 
   return (
     <div>
+<<<<<<< HEAD
       {/* <Header /> */}
+=======
+>>>>>>> c07ac163e1c6c93222d5d8a8e9b9a81934144d4e
       <HomePage />
     </div>
   );

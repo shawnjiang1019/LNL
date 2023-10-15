@@ -10,6 +10,7 @@ export default function LNLDashboard({}: LNLDashboardProps) {
     localStorage.removeItem("imgSrc");
   };
 
+<<<<<<< HEAD
   const handleScan = async () => {
     // console.log(localStorage.getItem('imgSrc'))
 
@@ -18,6 +19,10 @@ export default function LNLDashboard({}: LNLDashboardProps) {
     //   // description: localStorage.getItem("description"),
     //   imgSrc: localStorage.getItem("imgSrc"),
     // })
+=======
+  const handleScan = () => {
+    
+>>>>>>> c07ac163e1c6c93222d5d8a8e9b9a81934144d4e
   };
 
   return (
