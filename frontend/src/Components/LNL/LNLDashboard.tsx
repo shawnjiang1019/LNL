@@ -1,19 +1,17 @@
 import styled from "styled-components";
+import Button from "@mui/material/Button";
 import Input from "@mui/material/Input";
 
 export default function LNLDashboard() {
   return (
     <div className="dashboard-page">
       <LNLHeader>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "flex-end",
-            padding: ".3rem",
-            fontSize: "1.8rem",
-          }}
-        >
-          Utiliy menu coming...
+        <div>Utiliy menu coming...</div>
+        <div>
+          <Button variant="contained" href="/face">
+            Face
+          </Button>
+          <Button variant="contained">asd</Button>
         </div>
       </LNLHeader>
 
@@ -67,11 +65,15 @@ const DashboardContainer = styled.div`
 
 const LNLHeader = styled.header`
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+
   padding: 0.5rem;
-  background-color: #1e2530;
+  background-color: #03121e;
   border-top: 1px solid whitesmoke;
   border-bottom: 1px solid white;
   color: white;
+  font-size: 1.8rem;
 `;
 
 // after-authorization styles
