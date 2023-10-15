@@ -104,7 +104,7 @@ def create_spotify_oauth():
 
 
 @app.route('/top')
-def get_top_100():
+def get_top():
 	global songs
 	session['token_info'], authorized = get_token()
 	session.modified = True
@@ -114,7 +114,7 @@ def get_top_100():
 	
 	results = []
 	ids = []
-	for i in range(4):
+	for i in range(10):
 		curGroup = sp.current_user_top_tracks(limit = 20, time_range='short_term', offset = 20 * i)['items']
 
 		for ind, item in enumerate(curGroup):
