@@ -52,6 +52,7 @@ export default function Header() {
         src="https://cdn3.vectorstock.com/i/1000x1000/29/27/note-music-colorful-rainbow-logo-icon-illus-vector-28932927.jpg"
         alt=""
         width={50}
+        style={{ cursor: "pointer" }}
       />
 
       <a href="/" style={{ textDecoration: "none" }}>

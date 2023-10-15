@@ -41,7 +41,6 @@ html {
   background-color: white;
   border: solid 1px lightgray;
   padding: 0.5rem;
-  cursor: pointer;
 }
 
 .brand-name {
@@ -110,4 +109,43 @@ html {
   height: 60vh;
   padding: 1rem;
   background-color: gray;
+}
+
+/* main page */
+/* Homepage styles */
+.homepage-panel-1 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.side {
+  padding: 4rem 5rem;
+}
+
+.homepage-panel-1 .left-side {
+  width: 50%;
+}
+
+.homepage-panel-1 .right-side {
+  display: flex;
+  align-items: center;
+}
+
+.headertop {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.headerbot {
+  font-size: 1.3rem;
+  color: gray;
+  margin-bottom: 2rem;
+}
+
+.notes-direct {
+  padding: 1rem 3rem !important;
+}
+
+.dashboard-img {
+  width: 33rem;
 }
