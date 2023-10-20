@@ -239,7 +239,7 @@ app.post('/getEmotions', async (req: Request, res: Response) => {
     const songsResponse = await fetch("http://127.0.0.1:5000/get_songs")
     const songs: SongTracks = await songsResponse.json()
     const size = songs.songs.length
-    const message = `You will play the role of a human Rogerian therapist who is emulating the popular AI program Eliza, and must treat me as a mental health patient. Your only job is to determine, based on the patient's story, at least 50 songs that would be best fit the person's situation based on their top ${size} songs listed. Don't ask any questions, just take whatever story they had as the only source of information to determine the answer.
+    const message = `You will play the role of a human Rogerian therapist who is emulating the popular AI program Eliza, and must treat me as a mental health patient. Your only job is to determine, based on the patient's story, at least 5 songs that would be best fit the person's situation based on their top ${size} songs listed. Don't ask any questions, just take whatever story they had as the only source of information to determine the answer.
     Here is the following emotions data from image:
     ${JSON.stringify(prediction)}
     
@@ -248,10 +248,10 @@ app.post('/getEmotions', async (req: Request, res: Response) => {
         
     Respond only in this json format:
     {
-      "songs": [${songs.songs.map((song, i) => JSON.stringify([`song ${i + 1}`, `spotifyid ${i + 1}`]))}]
+      "songs": [${songs.songs.filter((e, i) => i < 10).map((song, i) => JSON.stringify([`song ${i + 1}`, `spotifyid ${i + 1}`]))}]
     }
 
-    Make sure to have at least 10 songs in response!
+    Make sure to have at least 5 songs in response!
             
     DON'T say "by <author name>".`
     console.log(message)
@@ -272,11 +272,14 @@ app.post('/getEmotions', async (req: Request, res: Response) => {
 
 async function getBestSongs(prompt: string): Promise<Songs | null> {
   try {
+    console.log("prompt", prompt)
     const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: [{ "role": "user", "content": prompt }],
-      temperature: 0.6
+      temperature: 0.6,
+      max_tokens: 3000
     });
+    console.log("response", response.choices[0].message.content)
     return JSON.parse(response.choices[0].message.content!) as Songs
   } catch (e) {
     console.error(e)
@@ -362,10 +365,10 @@ app.post("/getSongsFromText", async (req: Request, res: Response) => {
         
     Respond only in this json format:
     {
-      "songs": [${songs.songs.map((song, i) => JSON.stringify([`song ${i + 1}`, `spotify id ${i + 1}`]))}]
+      "songs": [${songs.songs.filter((e, i) => i < 10).map((song, i) => JSON.stringify([`song ${i + 1}`, `spotifyid ${i + 1}`]))}]
     }
 
-    Make sure to have at least 10 songs in response!
+    Make sure to have at least 5 songs in response!
             
     DON'T say "by <author name>".`
     const bestSongs = await getBestSongs(message)

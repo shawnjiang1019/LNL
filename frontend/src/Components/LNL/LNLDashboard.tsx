@@ -5,6 +5,7 @@ import Button from "@mui/material/Button";
 
 import { toast } from "react-toastify";
 import axios from "axios";
+import { CircularProgress } from "@mui/material";
 
 interface LNLDashboardProps { }
 export default function LNLDashboard({ }: LNLDashboardProps) {
@@ -22,11 +23,9 @@ export default function LNLDashboard({ }: LNLDashboardProps) {
     localStorage.removeItem("imgSrc");
   };
 
-  const [reqR, setReqR] = useState<any>(null)
-  const [bestImgSongs, setBestImgSongs] = useState<[string, string]>(["", ""])
-  const [bestTextSongs, setBestTextSongs] = useState<[string, string]>(["", ""])
 
   const [spotifyId, setSpotifyId] = useState(null)
+  const [loading, setLoading] = useState(false)
 
   const handleScan = async () => {
     if (!imgSrc) {
@@ -37,87 +36,69 @@ export default function LNLDashboard({ }: LNLDashboardProps) {
       alert("Please add a prompt");
       return;
     }
+    setLoading(true)
 
-    await axios.get('https://jsonplaceholder.typicode.com/todos/1')
-      .then(data => console.log(data))
+    // console.log(localStorage.getItem('imgSrc'))
+    let emotionSongs = []
+    const res = await fetch("http://localhost:5500/getEmotions", {
+      body: JSON.stringify({
+        payload: localStorage.getItem("imgSrc"),
+      }),
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    },)
+    emotionSongs = await res.json()
+    console.log('getemotions data', emotionSongs)
 
-    console.log(localStorage.getItem('imgSrc'))
-    const res = await axios.post("http://localhost:5500/input", {
-      prompt: localStorage.getItem("prompt"),
-      // description: localStorage.getItem("description"),
-      imgSrc: localStorage.getItem("imgSrc"),
-    })
-
-    console.log('asd', localStorage.getItem("imgSrc"))
-
+    // console.log('asd', localStorage.getItem("imgSrc"))
     toast.info("Scanning...");
 
-    let imgSongs = []
+    let textSongs = []
     try {
-      console.log(localStorage.getItem("imgSrc"))
-      const imageRes = await fetch("http://localhost:5500/getEmotions", {
+      const imageRes = await fetch("http://localhost:5500/getSongsFromText", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
         },
         body:
           JSON.stringify({
-            payload: localStorage.getItem("imgSrc")
+            prompt: localStorage.getItem("prompt")
           })
       });
-      const imageSongs = await imageRes.json()
-      imgSongs = imageSongs
-      setBestImgSongs(imageSongs)
-      console.log(imgSongs);
-    } catch (e) {
-      console.log(e)
-    }
-  
-
-    try {
-      console.log('asd', localStorage.getItem("prompt"))
-      const textRes = await fetch("http://localhost:5500/getSongsFromText", {
-        method: "POST",
-        body: JSON.stringify({
-          prompt: localStorage.getItem("prompt")
-        }),
-        headers: {
-          'Content-Type': 'application/json'
-        },
-      });
-      const textSongs = await textRes.json()
-      setBestTextSongs(textSongs)
-      console.log(textSongs);
+      textSongs = await imageRes.json()
+      console.log('text songs', textSongs);
     } catch (e) {
       console.log(e)
     }
 
     const uniqueSongs = Array.from(new Set<string>([
-      ...bestImgSongs.map(song => song[1]), 
-      // ...bestTextSongs.map(song => song[1])
+      ...emotionSongs.songs.map((song: any[]) => song[1]),
+      ...textSongs.songs.map((song: any[]) => song[1])
     ]))
     const topSongs = [
-      ...bestImgSongs, 
-      // ...bestTextSongs
+      ...emotionSongs.songs,
+      ...textSongs.songs
     ].filter(song => uniqueSongs.includes(song[1]))
+    console.log('top songs', topSongs)
 
-    console.log('top songs', imgSongs)
     try {
       const playlistRes = await fetch("http://localhost:5500/createPlaylist", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ songs: imgSongs }),
+        body: JSON.stringify({ songs: topSongs }),
       });
       const playlist = await playlistRes.json()
       console.log(playlist);
-      await new Promise(r => setTimeout(r, 4000));
       setSpotifyId(playlist.id)
     } catch (e) {
       console.log(e)
     }
 
+    setLoading(false)
     toast.success("Done...");
   };
 
@@ -190,7 +171,9 @@ export default function LNLDashboard({ }: LNLDashboardProps) {
               placeholder="Search songs (Coming soon..)"
               onClick={() => alert("being made")}
             />
-
+            {loading && <div style={{ width: '100%', display: 'flex', justifyContent: 'center', marginTop: '3rem' }}>
+              <CircularProgress />
+            </div>}
             {spotifyId &&
               <iframe
                 // style="border-radius:12px"

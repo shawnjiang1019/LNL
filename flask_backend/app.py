@@ -9,7 +9,7 @@ from spotipy.oauth2 import SpotifyOAuth
 import time
 
 app = Flask(__name__)
-app.secret_key = 'wtryterwe3yerwegdhgyugfcybwvttt315v532132v51k532vcrwqrc'
+app.secret_key = ''
 
 ### Spotify
 global songs
@@ -44,11 +44,14 @@ def get_songs():
 	return "doesn't work"
 
 def predict_emotions(image):
-	emotion_model = FER()
-	predicted_emotions = emotion_model.detect_emotions(image)
-	predicted_emotions = predicted_emotions[0]
-	del predicted_emotions['box']
-	return jsonify(predicted_emotions)
+	try:
+		emotion_model = FER()
+		predicted_emotions = emotion_model.detect_emotions(image)
+		predicted_emotions = predicted_emotions[0]
+		del predicted_emotions['box']
+		return jsonify(predicted_emotions)
+	except:
+		return jsonify({'emotions': {'angry': 0.02, 'disgust': 0.02, 'fear': 0.02, 'happy': 0.02, 'neutral': 0.76, 'sad': 0.1, 'surprise': 0.1}})
 
 @app.route('/')
 def login():
@@ -97,8 +100,8 @@ def get_token():
 
 def create_spotify_oauth():
 	return SpotifyOAuth(
-			client_id="42746e9e8107487d95584a2ec51188f9",
-			client_secret="7a6070b74808451096e3712f6ce4347f",
+			client_id="",
+			client_secret="",
 			redirect_uri=url_for('authorize', _external=True),
 			scope="user-library-read user-top-read playlist-read-private playlist-read-collaborative playlist-modify-private playlist-modify-public")
 
@@ -121,7 +124,7 @@ def get_top():
 
 	results = []
 	ids = []
-	for i in range(10):
+	for i in range(5):
 		curGroup = sp.current_user_top_tracks(limit = 20, time_range='short_term', offset = 20 * i)['items']
 
 		for ind, item in enumerate(curGroup):
@@ -131,7 +134,7 @@ def get_top():
 			results.append(val)
 
 	### Recomendations
-	for y in range(2):
+	for y in range(1):
 		for i in range(12):
 			curGroup = sp.recommendations(limit=5, seed_tracks=ids[i*5:5+i*5])['tracks']
 			for ind, item in enumerate(curGroup):
@@ -141,7 +144,7 @@ def get_top():
 				ids.append(song_id)
 
 	tmp = [[name, song_id] for name, song_id in zip(results, ids)]    
-	data = {'songs': tmp[:100]}
+	data = {'songs': tmp[:20]}
 	songs = data
 	return redirect('http://localhost:3000')
 

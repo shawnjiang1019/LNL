@@ -28,6 +28,7 @@ def input():
 def predict_emotions(image):
     emotion_model = FER()
     predicted_emotions = emotion_model.detect_emotions(image)
+    print(predicted_emotions)
     predicted_emotions = predicted_emotions[0]
     del predicted_emotions['box']
     return jsonify(predicted_emotions)
