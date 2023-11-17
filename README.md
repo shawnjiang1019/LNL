@@ -1,6 +1,6 @@
 # LNL
  
-**🌟 Inspiration**
+## 🌟 Inspiration
 
 We're inspired by the idea that emotions run deeper than a simple 'sad' or 'uplifting.' Our project was born from the realization that personalization is the key to managing emotional states effectively.
 🤯🔍 What it does?
@@ -11,7 +11,7 @@ What sets our solution apart is its ability to go beyond simplistic mood categor
 
 It's music therapy reimagined for the digital age, offering a new and more profound dimension in emotional support.
 
-**💡🛠💎 How we built it?**
+## 💡🛠💎 How we built it?
 
 We crafted our project by combining advanced technologies and teamwork. We used Flask, Python, React, and TypeScript for the backend and frontend, alongside the Spotify and OpenAI APIs.
 
@@ -19,7 +19,7 @@ Our biggest challenge was integrating the Spotify API. When we faced issues with
 
 Throughout the process, our close collaboration allowed us to seamlessly blend emotion recognition, music curation, and user-friendly design, resulting in a platform that enhances emotional well-being through personalized music.
 
-**🧩🤔💡 Challenges we ran into**
+## 🧩🤔💡 Challenges we ran into
 
 🔌 API Integration Complexities: We grappled with integrating and harmonizing multiple APIs.
 
@@ -31,11 +31,11 @@ Throughout the process, our close collaboration allowed us to seamlessly blend e
 
 🔑 Custom Authorization Wrapper: Building a custom solution for Spotify API's authorization proved to be a major hurdle.
 
-**🏆🥇🎉 Accomplishments that we're proud of**
+## 🏆🥇🎉 Accomplishments that we're proud of
 
 It works!!!
 
-**🧐📈🔎 What we learned**
+## 🧐📈🔎 What we learned
 
 🛠 Tech Skills: We deepened our technical proficiency.
 
@@ -49,7 +49,7 @@ It works!!!
 
 🌐 Global Impact: Technology can positively impact lives worldwide.
 
-**🌟👥🚀 What's next for Look 'n Listen**
+## 🌟👥🚀 What's next for Look 'n Listen
 
 🚀 Scaling Up: Making our platform accessible to more users.
 
